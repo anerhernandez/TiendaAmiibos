@@ -53,30 +53,14 @@ const totalPages = computed(() => {
       <!-- Filtros -->
       <header>
         <label class="text-lg" for="filtrarnombre">Filtrar por nombre</label><br>
-        <input
-          type="text"
-          name="filtrarnombre"
-          id="filtrarnombre"
-          placeholder="Mario"
-          v-model="personaje"
-          class="p-2 m-4 border border-gray-300 rounded-lg"
-        />
-        <button
-          @click="mostrarpersonaje(personaje)"
-          type="button"
-          name="buscar"
-          id="buscar"
-          class="mx-4 p-2 border border-gray-300 rounded-lg"
-        >
+        <input type="text" name="filtrarnombre" id="filtrarnombre" placeholder="Mario" v-model="personaje"
+          class="p-2 m-4 border border-gray-300 rounded-lg" />
+        <button @click="mostrarpersonaje(personaje)" type="button" name="buscar" id="buscar"
+          class="mx-4 p-2 border border-gray-300 rounded-lg">
           Buscar
         </button>
-        <button
-          @click="limpiarfiltros"
-          type="button"
-          name="limpiar"
-          id="limpiar"
-          class="mx-4 p-2 border border-gray-300 rounded-lg"
-        >
+        <button @click="limpiarfiltros" type="button" name="limpiar" id="limpiar"
+          class="mx-4 p-2 border border-gray-300 rounded-lg">
           Limpiar filtros
         </button>
       </header>
@@ -86,11 +70,8 @@ const totalPages = computed(() => {
         <!-- Listado de Amiibos -->
         <div v-if="paginatedArray.length > 0" class="place-self-center">
           <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            <div
-              v-for="(item, index) in paginatedArray"
-              :key="index"
-              class="rounded overflow-hidden shadow-lg place-self-center"
-            >
+            <div v-for="(item, index) in paginatedArray" :key="index"
+              class="rounded overflow-hidden shadow-lg place-self-center">
               <div class="flex justify-center">
                 <img class="w-36 md:w-52 lg:w-64" :src="item.image" />
               </div>
@@ -108,37 +89,29 @@ const totalPages = computed(() => {
                   <p class="text-gray-700 text-base p-1 dark:text-white">
                     Game Series: <b>{{ item.gameSeries }}</b>
                   </p>
+                  <button :value=item.name>Añadir a carrito</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-  
+
         <!-- Controles de Paginación -->
         <div class="flex justify-center mt-6">
-          <button
-            @click="currentPage--"
-            :disabled="currentPage === 1"
-            class="px-4 py-2 m-1 bg-gray-300 rounded hover:bg-gray-400 disabled:opacity-50"
-          >
+          <button @click="currentPage--" :disabled="currentPage === 1"
+            class="px-4 py-2 m-1 bg-gray-300 rounded hover:bg-gray-400 disabled:opacity-50">
             Anterior
           </button>
           <span class="px-4 py-2 m-1">Página {{ currentPage }} de {{ totalPages }}</span>
-          <button
-            @click="currentPage++"
-            :disabled="currentPage === totalPages"
-            class="px-4 py-2 m-1 bg-gray-300 rounded hover:bg-gray-400 disabled:opacity-50"
-          >
+          <button @click="currentPage++" :disabled="currentPage === totalPages"
+            class="px-4 py-2 m-1 bg-gray-300 rounded hover:bg-gray-400 disabled:opacity-50">
             Siguiente
           </button>
         </div>
       </div>
       <p v-else>No se encontraron amiibos con el nombre <b>{{ personaje }}</b></p>
-      </div>
-      <p v-else>Cargando...</p>
+    </div>
+    <p v-else>Cargando...</p>
   </div>
 </template>
-
-<style scoped>
-
-</style>
+<style scoped></style>
