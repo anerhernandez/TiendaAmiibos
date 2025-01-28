@@ -63,6 +63,10 @@ const totalPages = computed(() => {
           class="mx-4 p-2 border border-gray-300 rounded-lg">
           Limpiar filtros
         </button>
+        <button @click="limpiarfiltros" type="button" name="carrito" id="carrito"
+          class="mx-4 p-2 border border-gray-300 rounded-lg">
+          Mostrar carrito
+        </button>
       </header>
 
       <!-- No se ejecuta la muestra ni páginas si el amiibo buscado no existe -->
