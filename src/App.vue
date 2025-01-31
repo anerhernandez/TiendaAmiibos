@@ -54,10 +54,10 @@ function addtocart(amiibo){
      carrito.push(amiibo)
      localStorage.setItem("amiibos", JSON.stringify(carrito))
    }
+   document.getElementById("amiibos").innerHTML=""
     carrito.forEach(element => {
       let texto = document.createElement("p")
       texto.textContent = element;
-      console.log(element)
       document.getElementById("amiibos").appendChild(texto)
     });
 }
@@ -106,7 +106,7 @@ const totalPages = computed(() => {
       <div v-if="array != ''">
         <!-- Listado de Amiibos -->
         <div v-if="paginatedArray.length > 0" class="place-self-center dark:bg-neutral-800">
-          <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div class="container grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-12">
             <div v-for="(item, index) in paginatedArray" :key="index"
               class="rounded overflow-hidden shadow-lg place-self-center dark:bg-neutral-900 w-96">
               <div class="flex justify-center">
