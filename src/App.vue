@@ -26,6 +26,15 @@ function mostrarpersonaje(personaje) {
   currentPage.value = 1 // Reinicia la página al aplicar un filtro
   api()
 }
+//Function that loads and shows shopping cart
+function loadshoppingcart(){
+  document.getElementById("amiibos").innerHTML=""
+  JSON.parse(localStorage.getItem("amiibos")).forEach(element => {
+      let texto = document.createElement("p")
+      texto.textContent = element;
+      document.getElementById("amiibos").appendChild(texto)
+    });
+}
 
 // Limpiar filtros
 function limpiarfiltros() {
@@ -34,6 +43,8 @@ function limpiarfiltros() {
   currentPage.value = 1 // Reinicia la página al limpiar filtros
   api()
 }
+loadshoppingcart()
+
 function mostrarcarrito(){
   document.getElementById("carrito").setAttribute("style", "display:inline")
   document.getElementById("bcarritO").setAttribute("style", "display:inline")
@@ -54,12 +65,7 @@ function addtocart(amiibo){
      carrito.push(amiibo)
      localStorage.setItem("amiibos", JSON.stringify(carrito))
    }
-   document.getElementById("amiibos").innerHTML=""
-    carrito.forEach(element => {
-      let texto = document.createElement("p")
-      texto.textContent = element;
-      document.getElementById("amiibos").appendChild(texto)
-    });
+   loadshoppingcart()
 }
 
 // Propiedad computada para obtener los amiibos de la página actual
